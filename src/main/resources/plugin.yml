@@ -1,0 +1,47 @@
+name: ${project.artifactId}
+version: ${project.version}
+api-version: "1.15"
+main: ${project.groupId}.${project.artifactId}
+author: LazyGon
+depend: ["Box"]
+
+commands:
+  boxstick:
+    aliases: ["bs", "stick"]
+    permission: "boxstick.get"
+
+
+permissions:
+  boxstick.*:
+    description: 全部を司る権限
+    default: op
+    children:
+      boxstick.get: true
+      boxstick.withdraw.*: true
+      boxstick.farmer: true
+  boxstick.get:
+    description: 棒を手に入れるコマンド /boxstick を使う権限
+    default: true
+  boxstick.farmer:
+    description: Farmer Stickを使う権限
+    default: true
+  boxstick.withdraw.*:
+    description: Withdraw Stickのすべての権限の親権限
+    default: false
+    children:
+      boxstick.withdraw.block:  true
+      boxstick.withdraw.food:  true
+      boxstick.withdraw.tool:  true
+      boxstick.withdraw.potion:  true
+  boxstick.withdraw.block:
+    description: Withdraw Stickによる、ブロック配置時に自動補充する機能を使う権限
+    default: true
+  boxstick.withdraw.food:
+    description: Withdraw Stickによる、アイテム消費時（食料など）に自動補充する機能を使う権限
+    default: true
+  boxstick.withdraw.tool:
+    description: Withdraw Stickによる、武具や道具などのアイテム破損時に自動補充する機能を使う権限
+    default: true
+  boxstick.withdraw.potion:
+    description: Withdraw Stickによる、ポーション投擲時に自動補充する機能を使う権限
+    default: true

@@ -5,4 +5,4 @@ Box からアイテムを消費していろいろできる棒を追加するPL
 棒をオフハンドに持ってなんらかの棒に見合うアクションを行うと、棒の機能を使える。
 
 ## 権限
-[このページ]()で見られる。
+[このページ](https://github.com/okocraft/BoxStick/blob/master/src/main/resources/plugin.yml)で見られる。

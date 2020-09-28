@@ -176,30 +176,30 @@ public class FarmerStickListener implements Listener {
             return;
         }
 
-        if (data.getProtectFarmLand() && isFarmLand(block)) {
+        if (data.getProtectFarmLand().getValue() && isFarmLand(block)) {
             event.setCancelled(true);
             return;
         }
 
-        if (data.getProtectYoungPlants() && isYoungPlant(block)) {
+        if (data.getProtectYoungPlants().getValue() && isYoungPlant(block)) {
             event.setCancelled(true);
             return;
         }
 
         if (TREES.containsKey(type)) {
-            replantSapling(event, data.getProtectWhenNoStock());
+            replantSapling(event, data.getProtectWhenNoStock().getValue());
             return;
         }
 
         if (type == Material.CHORUS_FLOWER || type == Material.CHORUS_PLANT) {
-            replantChorus(event, data.getProtectWhenNoStock());
+            replantChorus(event, data.getProtectWhenNoStock().getValue());
             return;
         }
     }
 
     private void replantRangedSeed(BlockBreakEvent event, FarmerStickData data) {
         event.setCancelled(true);
-        int range = data.getHarvestingRange();
+        int range = data.getHarvestingRange().getValue();
         Location point = event.getBlock().getLocation().clone();
         point.add(-1 * range, 0, -1 * range);
         int minX = point.getBlockX();
@@ -211,7 +211,7 @@ public class FarmerStickListener implements Listener {
         for (int x = minX; x <= maxX; x++) {
             for (int z = minZ; z <= maxZ; z++) {
                 block = point.getBlock();
-                if (!PLANTS.containsKey(block.getType()) || data.getProtectYoungPlants() && isYoungPlant(block)) {
+                if (!PLANTS.containsKey(block.getType()) || data.getProtectYoungPlants().getValue() && isYoungPlant(block)) {
                     point.add(0, 0, 1);
                     continue;
                 }
@@ -219,7 +219,7 @@ public class FarmerStickListener implements Listener {
                 sub = new BlockBreakEvent(block, event.getPlayer());
                 Bukkit.getPluginManager().callEvent(sub);
                 if (!sub.isCancelled()) {
-                    replantSeed(sub, data.getProtectWhenNoStock());
+                    replantSeed(sub, data.getProtectWhenNoStock().getValue());
                 }
                 point.add(0, 0, 1);
             }

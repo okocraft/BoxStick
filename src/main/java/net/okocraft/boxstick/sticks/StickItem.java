@@ -13,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import net.okocraft.boxstick.BoxStick;
+import net.okocraft.boxstick.sticks.stickdata.DataTypes;
 import net.okocraft.boxstick.sticks.stickdata.StickData;
-import net.okocraft.boxstick.sticks.stickdata.StickDataTagType;
 
 /**
  * 基本構造
@@ -54,7 +54,7 @@ public class StickItem {
             return null;
         }
         return item.getItemMeta().getPersistentDataContainer()
-                .get(BOX_STICK_KEY, StickDataTagType.STICK_DATA);
+                .get(BOX_STICK_KEY, DataTypes.STICK_DATA);
     }
 
     public static boolean isStick(ItemStack item) {
@@ -66,7 +66,7 @@ public class StickItem {
     }
 
     public void setData(StickData data) {
-        useSetter(meta -> meta.getPersistentDataContainer().set(BOX_STICK_KEY, StickDataTagType.STICK_DATA, data));
+        useSetter(meta -> meta.getPersistentDataContainer().set(BOX_STICK_KEY, DataTypes.STICK_DATA, data));
     }
 
     public void setLore(List<String> lore) {

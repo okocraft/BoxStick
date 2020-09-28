@@ -107,7 +107,7 @@ public class WithdrawStickListener implements Listener {
         if (!(stickData instanceof WithdrawStickData)) {
             return;
         }
-        if (!((WithdrawStickData) stickData).getOnPlaceBlock()) {
+        if (!((WithdrawStickData) stickData).getOnPlaceBlock().getValue()) {
             return;
         }
 
@@ -130,7 +130,7 @@ public class WithdrawStickListener implements Listener {
         if (!(stickData instanceof WithdrawStickData)) {
             return;
         }
-        if (!((WithdrawStickData) stickData).getOnEatFood()) {
+        if (!((WithdrawStickData) stickData).getOnEatFood().getValue()) {
             return;
         }
 
@@ -152,7 +152,7 @@ public class WithdrawStickListener implements Listener {
         if (!(stickData instanceof WithdrawStickData)) {
             return;
         }
-        if (!((WithdrawStickData) stickData).getOnBreakItem()) {
+        if (!((WithdrawStickData) stickData).getOnBreakItem().getValue()) {
             return;
         }
 
@@ -190,7 +190,7 @@ public class WithdrawStickListener implements Listener {
         if (!(stickData instanceof WithdrawStickData)) {
             return;
         }
-        if (!((WithdrawStickData) stickData).getOnThrowPotion()) {
+        if (!((WithdrawStickData) stickData).getOnThrowPotion().getValue()) {
             return;
         }
 

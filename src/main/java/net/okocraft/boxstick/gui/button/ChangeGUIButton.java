@@ -18,7 +18,6 @@ public class ChangeGUIButton extends AbstractButton {
 
     @Override
     public void onClick(@NotNull InventoryClickEvent e) {
-        e.setCancelled(true);
         e.getWhoClicked().openInventory(gui.getInventory());
     }
 

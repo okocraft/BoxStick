@@ -35,6 +35,7 @@ public abstract class StickData {
     public abstract List<DataElement<?>> getElements();
 
     PersistentDataContainer deserialize(PersistentDataContainer container) {
+        container.set(STICK_TYPE, PersistentDataType.STRING, getType().name());
         getElements().forEach(element -> element.passValueTo(container));
         return container;
     }

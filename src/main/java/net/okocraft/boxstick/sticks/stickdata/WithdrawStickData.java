@@ -6,13 +6,11 @@ import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import net.okocraft.boxstick.sticks.StickItem;
 
-@NoArgsConstructor
-@Getter
+@Data
 @EqualsAndHashCode(callSuper = true)
 public class WithdrawStickData extends StickData {
 

@@ -7,13 +7,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataType;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import net.okocraft.boxstick.sticks.StickItem;
 
-@NoArgsConstructor
-@Getter
+@Data
 @EqualsAndHashCode(callSuper = true)
 public class FarmerStickData extends StickData {
 

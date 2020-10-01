@@ -10,6 +10,9 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode
 public abstract class StickData {
 
     protected static final BoxStick PLUGIN = JavaPlugin.getPlugin(BoxStick.class);

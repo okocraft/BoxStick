@@ -84,6 +84,7 @@ public class WithdrawStickListener implements Listener {
             return;
         }
         e.getPlayer().openInventory(new WithdrawStickGUI(stick).getInventory());
+        e.setCancelled(true);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)

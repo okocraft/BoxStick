@@ -119,6 +119,7 @@ public class FarmerStickListener implements Listener {
             return;
         }
         e.getPlayer().openInventory(new FarmerStickGUI(stick).getInventory());
+        e.setCancelled(true);
     }
 
     private boolean isBulkHarvesting = false;

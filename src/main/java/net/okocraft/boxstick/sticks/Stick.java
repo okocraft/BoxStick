@@ -1,6 +1,7 @@
 package net.okocraft.boxstick.sticks;
 
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
@@ -52,9 +53,9 @@ public class Stick {
         this(stickType.createData());
     }
 
-    public void updateHandItem(Player player) {
+    public void updateHandItem(Player player, EquipmentSlot hand) {
         stickData.update(stickItem);
-        player.getInventory().setItemInMainHand(stickItem.getItemStack());
+        player.getInventory().setItem(hand, stickItem.getItemStack());
     }
 
     public void updateItemAndInventory(Inventory inv) {

@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,7 +45,7 @@ public class ChangeStickTypeGUI extends GUI {
             @Override
             public void onClick(@NotNull InventoryClickEvent e) {
                 target.setData(type.createData());
-                target.updateHandItem((Player) e.getWhoClicked());
+                target.updateHandItem((Player) e.getWhoClicked(), EquipmentSlot.HAND);
                 e.getWhoClicked().closeInventory();
             }
 

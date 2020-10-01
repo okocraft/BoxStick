@@ -34,7 +34,6 @@ public class StickSettingGUI extends GUI {
 
             @Override
             public void onClick(@NotNull InventoryClickEvent e) {
-                e.setCancelled(true);
                 e.getWhoClicked().openInventory(new ChangeStickTypeGUI(target).getInventory());
             }
 
@@ -42,17 +41,6 @@ public class StickSettingGUI extends GUI {
             public void update() {
                 // 何もしない。
             }
-        };
-    }
-
-    protected static <T> SettingButton<T> createUnclickableSettingButton(DataElement<T> setting, Material icon,
-            Stick target) {
-        return new SettingButton<>(setting, icon, target) {
-
-            @Override
-            public void onClick(InventoryClickEvent e) {
-                e.setCancelled(true);
-            };
         };
     }
 

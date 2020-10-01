@@ -43,7 +43,6 @@ public class ChangeStickTypeGUI extends GUI {
         return new AbstractButton(icon) {
             @Override
             public void onClick(@NotNull InventoryClickEvent e) {
-                e.setCancelled(true);
                 target.setData(type.createData());
                 target.updateHandItem((Player) e.getWhoClicked());
                 e.getWhoClicked().closeInventory();

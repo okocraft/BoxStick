@@ -73,16 +73,14 @@ public class WithdrawStickListener implements Listener {
             return;
         }
         e.getPlayer().openInventory(new WithdrawStickGUI(stick).getInventory());
-        e.setCancelled(true);
     }
-    
-    
+
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void blockPlace(BlockPlaceEvent event) {
         if (!event.getPlayer().hasPermission("boxstick.withdraw.block")) {
             return;
         }
-        
+
         StickData stickData = StickItem.getDataOf(event.getPlayer().getInventory().getItemInOffHand());
         if (!(stickData instanceof WithdrawStickData)) {
             return;
@@ -189,22 +187,22 @@ public class WithdrawStickListener implements Listener {
         if (player.getGameMode() == GameMode.CREATIVE) {
             return false;
         }
-        
+
         if (config.getDisabledWorlds().contains(player.getWorld().getName())) {
             return false;
         }
-        
+
         ItemStack index = item.clone();
         index.setAmount(1);
         String itemName = itemData.getName(index);
         if (itemName == null) {
             return false;
         }
-        
+
         if (!box.getAPI().getCategories().getAllItems().contains(itemName)) {
             return false;
         }
-        
+
         int stock = playerData.getStock(player, index);
         if (stock < 1) {
             return false;

@@ -59,7 +59,7 @@ public class ItemSelector extends GUI {
         return new AbstractButton(new ButtonIcon(new ItemStack(Material.GRAY_STAINED_GLASS_PANE))) {
             @Override
             public void onClick(@NotNull InventoryClickEvent e) {
-                e.setCancelled(true);
+                // 何もしない。
             }
 
             @Override
@@ -73,7 +73,6 @@ public class ItemSelector extends GUI {
         return new AbstractButton(new ButtonIcon(item)) {
             @Override
             public void onClick(@NotNull InventoryClickEvent e) {
-                e.setCancelled(true);
                 consumer.accept(item);
             }
 

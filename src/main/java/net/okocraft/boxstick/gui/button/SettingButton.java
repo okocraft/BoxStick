@@ -36,7 +36,6 @@ public class SettingButton<T> extends AbstractButton {
 
     @Override
     public void onClick(@NotNull InventoryClickEvent e) {
-        e.setCancelled(true);
         target.updateHandItem((Player) e.getWhoClicked());
         ((GUI) e.getClickedInventory().getHolder()).setItem(e.getSlot());
     }

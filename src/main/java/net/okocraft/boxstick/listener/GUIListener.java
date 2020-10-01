@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
@@ -14,13 +15,13 @@ import net.okocraft.boxstick.gui.GUI;
 
 @EqualsAndHashCode
 public class GUIListener implements Listener {
-    
+
     private final BoxStick plugin;
 
     public GUIListener(BoxStick plugin) {
         this.plugin = plugin;
     }
-    
+
     /**
      * このリスナーをBukkitに登録し、稼働させる。
      */
@@ -34,10 +35,11 @@ public class GUIListener implements Listener {
         Inventory inv = event.getView().getTopInventory();
         if (inv.getHolder() instanceof GUI) {
             Inventory clickedInv = event.getClickedInventory();
-            if (clickedInv != null && clickedInv.getType() != InventoryType.PLAYER) {
+            event.setCancelled(true);
+            if (clickedInv != null && clickedInv.getType() != InventoryType.PLAYER
+                    && (event.getAction() == InventoryAction.PICKUP_ALL
+                            || event.getAction() == InventoryAction.PICKUP_HALF)) {
                 ((GUI) inv.getHolder()).onClick(event);
-            } else {
-                event.setCancelled(true);
             }
         }
     }

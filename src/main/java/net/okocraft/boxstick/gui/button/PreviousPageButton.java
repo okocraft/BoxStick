@@ -15,14 +15,11 @@ public class PreviousPageButton extends AbstractButton {
     private int guiPage = 1;
 
     public PreviousPageButton() {
-        super(
-            new ButtonIcon(new ItemStack(Material.ARROW))
-                    .setDisplayName(ChatColor.GOLD + "前のページ")
-                    .setLore(List.of())
-                    .setGlowing(false) // default value
+        super(new ButtonIcon(new ItemStack(Material.ARROW)).setDisplayName(ChatColor.GOLD + "前のページ").setLore(List.of())
+                .setGlowing(false) // default value
         );
 
-        //TODO: ぷれほる
+        // TODO: ぷれほる
         icon.applyPlaceHolder(null);
     }
 
@@ -39,5 +36,5 @@ public class PreviousPageButton extends AbstractButton {
     public void update() {
         // TODO: set lore or name depending on gui page.
     }
-    
+
 }

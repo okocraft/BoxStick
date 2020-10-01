@@ -36,8 +36,7 @@ import net.okocraft.boxstick.sticks.stickdata.FarmerStickData;
 import net.okocraft.boxstick.sticks.stickdata.StickData;
 
 /**
- * イベント処理によって、Boxに入っている種を利用した苗の自動植え替えを実現する。
- * start()を実行すると、以前にリスナーが登録されていたら解除される。
+ * イベント処理によって、Boxに入っている種を利用した苗の自動植え替えを実現する。 start()を実行すると、以前にリスナーが登録されていたら解除される。
  */
 @EqualsAndHashCode
 public class FarmerStickListener implements Listener {
@@ -49,7 +48,7 @@ public class FarmerStickListener implements Listener {
 
     private static final Map<Material, Material> PLANTS = new EnumMap<>(Material.class);
     private static final Map<Material, Material> TREES = new EnumMap<>(Material.class);
-    
+
     static {
         PLANTS.put(Material.WHEAT, Material.WHEAT_SEEDS);
         PLANTS.put(Material.POTATOES, Material.POTATO);
@@ -57,7 +56,7 @@ public class FarmerStickListener implements Listener {
         PLANTS.put(Material.BEETROOTS, Material.BEETROOT_SEEDS);
         PLANTS.put(Material.NETHER_WART, Material.NETHER_WART);
         PLANTS.put(Material.SWEET_BERRY_BUSH, Material.SWEET_BERRIES);
-        
+
         TREES.put(Material.ACACIA_LOG, Material.ACACIA_SAPLING);
         TREES.put(Material.ACACIA_WOOD, Material.ACACIA_SAPLING);
         TREES.put(Material.SPRUCE_LOG, Material.SPRUCE_SAPLING);
@@ -83,7 +82,7 @@ public class FarmerStickListener implements Listener {
         TREES.put(Material.STRIPPED_OAK_LOG, Material.OAK_SAPLING);
         TREES.put(Material.STRIPPED_OAK_WOOD, Material.OAK_SAPLING);
     }
-    
+
     public FarmerStickListener(BoxStick plugin) {
         this.plugin = plugin;
     }
@@ -141,7 +140,7 @@ public class FarmerStickListener implements Listener {
             return;
         }
         FarmerStickData data = (FarmerStickData) rawData;
-        
+
         Block block = event.getBlock();
         Material type = block.getType();
 
@@ -187,7 +186,8 @@ public class FarmerStickListener implements Listener {
         for (int x = minX; x <= maxX; x++) {
             for (int z = minZ; z <= maxZ; z++) {
                 block = point.getBlock();
-                if (!PLANTS.containsKey(block.getType()) || data.getProtectYoungPlants().getValue() && isYoungPlant(block)) {
+                if (!PLANTS.containsKey(block.getType())
+                        || data.getProtectYoungPlants().getValue() && isYoungPlant(block)) {
                     point.add(0, 0, 1);
                     continue;
                 }
@@ -241,7 +241,7 @@ public class FarmerStickListener implements Listener {
         Block block = event.getBlock();
         Material sapling = TREES.get(block.getType());
         Material blockBelow = block.getRelative(BlockFace.DOWN).getBlockData().getMaterial();
-        
+
         if (blockBelow != Material.DIRT && blockBelow != Material.GRASS_BLOCK && blockBelow != Material.PODZOL) {
             return;
         }
@@ -322,8 +322,8 @@ public class FarmerStickListener implements Listener {
             return;
         }
 
-        new BukkitRunnable(){
-            
+        new BukkitRunnable() {
+
             @Override
             public void run() {
                 chorus.breakNaturally();

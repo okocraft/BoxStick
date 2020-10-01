@@ -10,7 +10,6 @@ commands:
     aliases: ["bs", "stick"]
     permission: "boxstick.get"
 
-
 permissions:
   boxstick.*:
     description: 全部を司る権限
@@ -29,10 +28,10 @@ permissions:
     description: Withdraw Stickのすべての権限の親権限
     default: false
     children:
-      boxstick.withdraw.block:  true
-      boxstick.withdraw.food:  true
-      boxstick.withdraw.tool:  true
-      boxstick.withdraw.potion:  true
+      boxstick.withdraw.block: true
+      boxstick.withdraw.food: true
+      boxstick.withdraw.tool: true
+      boxstick.withdraw.potion: true
   boxstick.withdraw.block:
     description: Withdraw Stickによる、ブロック配置時に自動補充する機能を使う権限
     default: true

@@ -8,9 +8,9 @@ import net.okocraft.boxstick.gui.GUI;
 
 @EqualsAndHashCode(callSuper = true)
 public class ChangeGUIButton extends AbstractButton {
-    
+
     private final GUI gui;
-    
+
     public ChangeGUIButton(ButtonIcon icon, GUI gui) {
         super(icon);
         this.gui = gui;

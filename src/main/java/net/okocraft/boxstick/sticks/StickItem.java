@@ -53,8 +53,7 @@ public class StickItem {
         if (item == null || !item.hasItemMeta()) {
             return null;
         }
-        return item.getItemMeta().getPersistentDataContainer()
-                .get(STICK_DATA_KEY, DataTypes.STICK_DATA);
+        return item.getItemMeta().getPersistentDataContainer().get(STICK_DATA_KEY, DataTypes.STICK_DATA);
     }
 
     public static boolean isStick(ItemStack item) {
@@ -78,7 +77,8 @@ public class StickItem {
     }
 
     private void useSetter(Consumer<ItemMeta> setter) {
-        ItemMeta meta = Objects.requireNonNull(item.getItemMeta(), "Stored ItemStack may not be stick (ItemMeta was null).");
+        ItemMeta meta = Objects.requireNonNull(item.getItemMeta(),
+                "Stored ItemStack may not be stick (ItemMeta was null).");
         setter.accept(meta);
         item.setItemMeta(meta);
     }

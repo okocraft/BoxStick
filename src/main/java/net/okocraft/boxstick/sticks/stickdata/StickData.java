@@ -31,7 +31,7 @@ public abstract class StickData {
         lore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
         itemHolder.setLore(lore);
     }
-    
+
     public abstract List<DataElement<?>> getElements();
 
     PersistentDataContainer deserialize(PersistentDataContainer container) {

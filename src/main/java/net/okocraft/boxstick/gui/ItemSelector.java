@@ -45,11 +45,8 @@ public class ItemSelector extends GUI {
             };
             categoryGUI.putElementAndPageArrow(categories.getItems(category).stream()
                     .map(item -> createItemConsumerButton(item, itemConsumer)).collect(Collectors.toList()));
-            buttonList.putButton(
-                1,
-                categoryButtonSlots.next(),
-                new ChangeGUIButton(new ButtonIcon(categories.getIcon(category)), categoryGUI)
-            );
+            buttonList.putButton(1, categoryButtonSlots.next(),
+                    new ChangeGUIButton(new ButtonIcon(categories.getIcon(category)), categoryGUI));
         });
 
         setItems();

@@ -41,8 +41,8 @@ public class PaginatedButtonList {
     /**
      * あるページのあるスロットのボタンを設定する。
      * 
-     * @param page ページ
-     * @param slot スロット
+     * @param page   ページ
+     * @param slot   スロット
      * @param button ボタン。未設定にするときはnullを指定する。
      * @return もともとその位置に設定されていたボタン。未設定のときはnullを返す。
      */

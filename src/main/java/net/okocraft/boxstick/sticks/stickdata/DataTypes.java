@@ -7,12 +7,12 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
-
 public final class DataTypes {
 
-    private DataTypes() {}
+    private DataTypes() {
+    }
 
-    public static final PersistentDataType<Byte, Boolean> BOOL = new PersistentDataType<Byte,Boolean>(){
+    public static final PersistentDataType<Byte, Boolean> BOOL = new PersistentDataType<Byte, Boolean>() {
 
         @Override
         public Class<Byte> getPrimitiveType() {
@@ -33,7 +33,6 @@ public final class DataTypes {
         public Boolean fromPrimitive(Byte primitive, PersistentDataAdapterContext context) {
             return Optional.ofNullable(primitive).orElse((byte) 0) == 1;
         }
-        
     };
 
     public static final PersistentDataType<int[], Vector> VECTOR = new PersistentDataType<>() {
@@ -50,7 +49,7 @@ public final class DataTypes {
 
         @Override
         public int[] toPrimitive(Vector complex, PersistentDataAdapterContext context) {
-            return new int[] {complex.getBlockX(), complex.getBlockY(), complex.getBlockZ()};
+            return new int[] { complex.getBlockX(), complex.getBlockY(), complex.getBlockZ() };
         }
 
         @Override
@@ -62,7 +61,6 @@ public final class DataTypes {
                 default: return new Vector();
             }
         }
-
     };
 
     public static final PersistentDataType<PersistentDataContainer, StickData> STICK_DATA = new PersistentDataType<>() {

@@ -16,10 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import lombok.EqualsAndHashCode;
 
 /**
- * boxstickを使うと
- * * モード変更ボタン
- * * 各種設定ボタン
- * などを表示する。
+ * boxstickを使うと * モード変更ボタン * 各種設定ボタン などを表示する。
  */
 @EqualsAndHashCode
 public abstract class GUI implements InventoryHolder {
@@ -85,9 +82,9 @@ public abstract class GUI implements InventoryHolder {
                     slot = 0;
                     page++;
                 }
-                
+
                 buttonList.putButton(page, slot, button);
-                
+
                 slot++;
             }
         } else {
@@ -97,9 +94,9 @@ public abstract class GUI implements InventoryHolder {
                     slot = 1;
                     page++;
                 }
-                
+
                 buttonList.putButton(page, slot, button);
-                
+
                 slot++;
             }
         }

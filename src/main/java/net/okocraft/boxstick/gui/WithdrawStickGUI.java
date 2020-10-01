@@ -7,7 +7,7 @@ import net.okocraft.boxstick.sticks.stickdata.StickData;
 import net.okocraft.boxstick.sticks.stickdata.WithdrawStickData;
 
 public class WithdrawStickGUI extends StickSettingGUI {
-    
+
     public WithdrawStickGUI(Stick stick) {
         super(9, "Withdraw Stick - 設定画面", stick);
         StickData stickData = stick.getData();

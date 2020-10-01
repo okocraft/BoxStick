@@ -14,14 +14,14 @@ public class DataElement<T> {
 
     @NotNull
     private final NamespacedKey key;
-    
+
     @NotNull
     private final String description;
-    
+
     @Getter(AccessLevel.PACKAGE)
     @NotNull
     private final PersistentDataType<?, T> dataType;
-    
+
     @NotNull
     private T value;
 

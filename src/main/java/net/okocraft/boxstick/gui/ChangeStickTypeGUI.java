@@ -38,8 +38,7 @@ public class ChangeStickTypeGUI extends GUI {
         List<String> iconLore = new ArrayList<>(type.getStickDescription());
         iconLore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
         ButtonIcon icon = new ButtonIcon(new ItemStack(iconMaterial))
-                .setDisplayName(ChatColor.YELLOW + type.getStickName())
-                .setLore(iconLore);
+                .setDisplayName(ChatColor.YELLOW + type.getStickName()).setLore(iconLore);
 
         return new AbstractButton(icon) {
             @Override

@@ -23,10 +23,11 @@ public class SettingButton<T> extends AbstractButton {
     public SettingButton(@NotNull DataElement<T> setting, @NotNull Material iconMaterial, @NotNull Stick target) {
         super(new ButtonIcon(new ItemStack(iconMaterial)));
         // 例: 選択している領域のワールド: %world%
-        this.iconName = ChatColor.YELLOW + setting.getDescription() + ChatColor.GRAY + ": " + ChatColor.AQUA + "%value%";
+        this.iconName = ChatColor.YELLOW + setting.getDescription() + ChatColor.GRAY + ": " + ChatColor.AQUA
+                + "%value%";
         this.target = target;
         this.setting = setting;
-        
+
         setValue(setting.getValue());
     }
 

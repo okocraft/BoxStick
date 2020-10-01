@@ -25,7 +25,13 @@ public abstract class StickData {
     }
 
     static StickData serialize(PersistentDataContainer container) {
-        StickData serialized = StickType.valueOf(container.get(STICK_TYPE, PersistentDataType.STRING)).createData();
+        StickType type;
+        try {
+            type = StickType.valueOf(container.getOrDefault(STICK_TYPE, PersistentDataType.STRING, "WITHDRAW"));
+        } catch (IllegalArgumentException e) {
+            type = StickType.WITHDRAW;
+        }
+        StickData serialized = type.createData();
         serialized.getElements().forEach(element -> element.setValueFrom(container));
         return serialized;
     }

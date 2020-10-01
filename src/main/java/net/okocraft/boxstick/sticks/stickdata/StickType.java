@@ -21,7 +21,7 @@ public enum StickType {
         "      &e右クリックでpos2を選択します。",
         "      &eオフハンドに持ってシフトを押しながら右クリで貼り付けます。",
         "      &e※1 消滅したブロックはBoxに入りません。",
-        "      &e※2 Boxにないブロックは空気になります。"
+        "      &e※2 Boxにないブロックはそのままになります。"
     ));
 
     private final Supplier<? extends StickData> constructor;

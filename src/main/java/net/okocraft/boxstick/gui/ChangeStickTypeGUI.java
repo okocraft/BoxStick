@@ -1,5 +1,6 @@
 package net.okocraft.boxstick.gui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.ChatColor;
@@ -26,27 +27,19 @@ public class ChangeStickTypeGUI extends GUI {
 
         this.target = target;
 
-        ButtonIcon withdrawStickIcon = new ButtonIcon(new ItemStack(Material.CHEST))
-                .setDisplayName(ChatColor.YELLOW + "Withdraw Stick")
-                .setLore(List.of(
-                        ChatColor.WHITE + "アイテムを使うと自動でBoxから",
-                        ChatColor.WHITE + "補充してくれるBox Stick。"
-                ));
-
-        ButtonIcon farmerStickIcon = new ButtonIcon(new ItemStack(Material.IRON_HOE))
-                .setDisplayName(ChatColor.YELLOW + "Farmer Stick")
-                .setLore(List.of(
-                        ChatColor.WHITE + "オフハンドに持つと自動植え直しと",
-                        ChatColor.WHITE + "作物の範囲破壊を行えるBox Stick。"
-                ));
-
-        buttonList.putButton(1, 0, createStickButton(withdrawStickIcon, StickType.WITHDRAW));
-        buttonList.putButton(1, 1, createStickButton(farmerStickIcon, StickType.FARMER));
+        buttonList.putButton(1, 0, createStickButton(Material.CHEST, StickType.WITHDRAW));
+        buttonList.putButton(1, 1, createStickButton(Material.IRON_HOE, StickType.FARMER));
 
         setItems();
     }
 
-    private Button createStickButton(ButtonIcon icon, StickType type) {
+    private Button createStickButton(Material iconMaterial, StickType type) {
+        List<String> iconLore = new ArrayList<>(type.getStickDescription());
+        iconLore.replaceAll(line -> ChatColor.translateAlternateColorCodes('&', line));
+        ButtonIcon icon = new ButtonIcon(new ItemStack(iconMaterial))
+                .setDisplayName(ChatColor.YELLOW + type.getStickName())
+                .setLore(iconLore);
+
         return new AbstractButton(icon) {
             @Override
             public void onClick(@NotNull InventoryClickEvent e) {

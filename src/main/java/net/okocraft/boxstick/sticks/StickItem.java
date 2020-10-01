@@ -32,7 +32,7 @@ import net.okocraft.boxstick.sticks.stickdata.StickData;
 public class StickItem {
 
     protected static final BoxStick PLUGIN = JavaPlugin.getPlugin(BoxStick.class);
-    private static final NamespacedKey BOX_STICK_KEY = new NamespacedKey(PLUGIN, "boxstick");
+    private static final NamespacedKey STICK_DATA_KEY = new NamespacedKey(PLUGIN, "stickdata");
 
     private final ItemStack item;
 
@@ -54,7 +54,7 @@ public class StickItem {
             return null;
         }
         return item.getItemMeta().getPersistentDataContainer()
-                .get(BOX_STICK_KEY, DataTypes.STICK_DATA);
+                .get(STICK_DATA_KEY, DataTypes.STICK_DATA);
     }
 
     public static boolean isStick(ItemStack item) {
@@ -66,7 +66,7 @@ public class StickItem {
     }
 
     public void setData(StickData data) {
-        useSetter(meta -> meta.getPersistentDataContainer().set(BOX_STICK_KEY, DataTypes.STICK_DATA, data));
+        useSetter(meta -> meta.getPersistentDataContainer().set(STICK_DATA_KEY, DataTypes.STICK_DATA, data));
     }
 
     public void setLore(List<String> lore) {

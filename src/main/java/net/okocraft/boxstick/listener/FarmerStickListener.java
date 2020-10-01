@@ -20,7 +20,6 @@ package net.okocraft.boxstick.listener;
 
 import java.util.EnumMap;
 import java.util.Map;
-import java.util.Objects;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -42,6 +41,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import lombok.EqualsAndHashCode;
 import net.okocraft.box.Box;
 import net.okocraft.box.config.Config;
 import net.okocraft.box.database.PlayerData;
@@ -56,6 +56,7 @@ import net.okocraft.boxstick.sticks.stickdata.StickData;
  * イベント処理によって、Boxに入っている種を利用した苗の自動植え替えを実現する。
  * start()を実行すると、以前にリスナーが登録されていたら解除される。
  */
+@EqualsAndHashCode
 public class FarmerStickListener implements Listener {
 
     private final BoxStick plugin;
@@ -110,23 +111,6 @@ public class FarmerStickListener implements Listener {
     public void start() {
         HandlerList.unregisterAll(this);
         Bukkit.getPluginManager().registerEvents(this, plugin);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof FarmerStickListener)) {
-            return false;
-        }
-        FarmerStickListener replant = (FarmerStickListener) o;
-        return Objects.equals(plugin, replant.plugin) && Objects.equals(config, replant.config)
-                && Objects.equals(playerData, replant.playerData);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(plugin, config, playerData);
     }
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)

@@ -1,7 +1,6 @@
 package net.okocraft.boxstick.gui;
 
 import java.util.List;
-import java.util.Objects;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,12 +9,14 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+import lombok.EqualsAndHashCode;
 import net.okocraft.boxstick.gui.button.AbstractButton;
 import net.okocraft.boxstick.gui.button.Button;
 import net.okocraft.boxstick.gui.button.ButtonIcon;
 import net.okocraft.boxstick.sticks.Stick;
 import net.okocraft.boxstick.sticks.stickdata.StickType;
 
+@EqualsAndHashCode(callSuper = true)
 public class ChangeStickTypeGUI extends GUI {
 
     private final Stick target;
@@ -60,21 +61,5 @@ public class ChangeStickTypeGUI extends GUI {
                 // 何もしない。
             }
         };
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof ChangeStickTypeGUI)) {
-            return false;
-        }
-        ChangeStickTypeGUI changeStickTypeGUI = (ChangeStickTypeGUI) o;
-        return Objects.equals(target, changeStickTypeGUI.target);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(target);
     }
 }

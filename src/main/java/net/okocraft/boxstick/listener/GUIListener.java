@@ -1,7 +1,5 @@
 package net.okocraft.boxstick.listener;
 
-import java.util.Objects;
-
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
@@ -10,9 +8,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 
+import lombok.EqualsAndHashCode;
 import net.okocraft.boxstick.BoxStick;
 import net.okocraft.boxstick.gui.GUI;
 
+@EqualsAndHashCode
 public class GUIListener implements Listener {
     
     private final BoxStick plugin;
@@ -27,22 +27,6 @@ public class GUIListener implements Listener {
     public void start() {
         HandlerList.unregisterAll(this);
         Bukkit.getPluginManager().registerEvents(this, plugin);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof GUIListener)) {
-            return false;
-        }
-        GUIListener gUIListener = (GUIListener) o;
-        return Objects.equals(plugin, gUIListener.plugin);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(plugin);
     }
 
     @EventHandler(ignoreCancelled = true)

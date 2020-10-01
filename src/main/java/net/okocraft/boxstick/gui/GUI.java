@@ -6,7 +6,6 @@ import net.okocraft.boxstick.gui.button.PreviousPageButton;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -14,12 +13,15 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * boxstickを使うと
  * * モード変更ボタン
  * * 各種設定ボタン
  * などを表示する。
  */
+@EqualsAndHashCode
 public abstract class GUI implements InventoryHolder {
 
     protected final Inventory inv;
@@ -72,22 +74,6 @@ public abstract class GUI implements InventoryHolder {
     public void update() {
         buttonList.getAllButtons().forEach(Button::update);
         setItems();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof GUI)) {
-            return false;
-        }
-        GUI boxInventoryHolder = (GUI) o;
-        return Objects.equals(buttonList, boxInventoryHolder.buttonList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(buttonList);
     }
 
     protected void putElementAndPageArrow(List<Button> elements) {

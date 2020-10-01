@@ -6,10 +6,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.jetbrains.annotations.NotNull;
 
+import lombok.EqualsAndHashCode;
 import net.okocraft.box.Box;
 
-import java.util.Objects;
-
+@EqualsAndHashCode
 public abstract class AbstractButton implements Button {
 
     protected static final Box PLUGIN = Box.getInstance();
@@ -37,24 +37,5 @@ public abstract class AbstractButton implements Button {
         meta.setOwningPlayer(player);
         head.setItemMeta(meta);
         return new ButtonIcon(head);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-
-        if (!(o instanceof AbstractButton)) {
-            return false;
-        }
-
-        AbstractButton that = (AbstractButton) o;
-        return icon.equals(that.icon);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(icon);
     }
 }

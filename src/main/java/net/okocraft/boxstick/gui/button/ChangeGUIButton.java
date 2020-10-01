@@ -1,12 +1,12 @@
 package net.okocraft.boxstick.gui.button;
 
-import java.util.Objects;
-
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.jetbrains.annotations.NotNull;
 
+import lombok.EqualsAndHashCode;
 import net.okocraft.boxstick.gui.GUI;
 
+@EqualsAndHashCode(callSuper = true)
 public class ChangeGUIButton extends AbstractButton {
     
     private final GUI gui;
@@ -25,22 +25,5 @@ public class ChangeGUIButton extends AbstractButton {
     @Override
     public void update() {
         // 何もしない。
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof ChangeGUIButton)) {
-            return false;
-        }
-        ChangeGUIButton changeGUIButton = (ChangeGUIButton) o;
-        return Objects.equals(gui, changeGUIButton.gui);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(gui);
     }
 }

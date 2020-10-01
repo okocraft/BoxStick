@@ -1,7 +1,5 @@
 package net.okocraft.boxstick.listener;
 
-import java.util.Objects;
-
 import net.okocraft.boxstick.BoxStick;
 import net.okocraft.boxstick.gui.WithdrawStickGUI;
 import net.okocraft.boxstick.sticks.Stick;
@@ -31,6 +29,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import lombok.EqualsAndHashCode;
 import net.okocraft.box.Box;
 import net.okocraft.box.config.Config;
 import net.okocraft.box.database.ItemData;
@@ -39,6 +38,7 @@ import net.okocraft.box.database.PlayerData;
 /**
  * Box stickに関するイベントを処理するリスナー。start()を実行すると、以前にリスナーが登録されていたら解除される。
  */
+@EqualsAndHashCode
 public class WithdrawStickListener implements Listener {
 
     private final BoxStick plugin;
@@ -57,26 +57,6 @@ public class WithdrawStickListener implements Listener {
     public void start() {
         HandlerList.unregisterAll(this);
         Bukkit.getPluginManager().registerEvents(this, plugin);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof WithdrawStickListener)) {
-            return false;
-        }
-        WithdrawStickListener withdrawStickListener = (WithdrawStickListener) o;
-        return Objects.equals(plugin, withdrawStickListener.plugin)
-                && Objects.equals(box, withdrawStickListener.box)
-                && Objects.equals(config, withdrawStickListener.config)
-                && Objects.equals(playerData, withdrawStickListener.playerData)
-                && Objects.equals(itemData, withdrawStickListener.itemData);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(plugin, box, config, playerData, itemData);
     }
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)

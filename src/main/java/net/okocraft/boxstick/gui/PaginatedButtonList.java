@@ -2,15 +2,16 @@ package net.okocraft.boxstick.gui;
 
 import java.util.Collection;
 import java.util.Map;
-import java.util.Objects;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 
 import org.jetbrains.annotations.Nullable;
 
+import lombok.EqualsAndHashCode;
 import net.okocraft.boxstick.gui.button.Button;
 
+@EqualsAndHashCode
 public class PaginatedButtonList {
 
     /** Table<row: page, column: slot, button> */
@@ -56,21 +57,5 @@ public class PaginatedButtonList {
      */
     public Collection<Button> getAllButtons() {
         return buttons.values();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof PaginatedButtonList)) {
-            return false;
-        }
-        PaginatedButtonList paginatedButtonList = (PaginatedButtonList) o;
-        return Objects.equals(buttons, paginatedButtonList.buttons);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(buttons);
     }
 }

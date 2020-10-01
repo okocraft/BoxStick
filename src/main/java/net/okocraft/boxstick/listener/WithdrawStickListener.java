@@ -18,6 +18,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.Event.Result;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
@@ -59,9 +60,19 @@ public class WithdrawStickListener implements Listener {
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
-    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void openStickSetting(PlayerInteractEvent e) {
-        if (e.getHand() == EquipmentSlot.OFF_HAND || e.getAction() != Action.LEFT_CLICK_BLOCK) {
+        // (ignoreCancelled = true) for PlayerInteractEvent.
+        if (e.useInteractedBlock() == Result.DENY
+                && (e.getAction() == Action.LEFT_CLICK_BLOCK || e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+            return;
+        }
+        // stop handling OFF_HAND click.
+        if (e.getHand() == EquipmentSlot.OFF_HAND) {
+            return;
+        }
+        // stop handling other Actions.
+        if (e.getAction() != Action.LEFT_CLICK_BLOCK && e.getAction() != Action.LEFT_CLICK_AIR) {
             return;
         }
         ItemStack stickItem = e.getPlayer().getInventory().getItemInMainHand();
